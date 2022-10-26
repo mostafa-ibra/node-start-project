@@ -38,51 +38,49 @@ describe("GET /api/products", () => {
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(2);
     expect(Object.keys(res.body[0])).toEqual(
-      expect.arrayContaining([
-        "name",
-        "defaultPrice",
-        "numberInStock",
-      ])
+      expect.arrayContaining(["name", "defaultPrice", "numberInStock"])
     );
   });
 });
 
-describe("POST /api/products", () => {
-  let product;
-  let token;
+// describe("POST /api/products", () => {
+//   let product;
+//   let token;
 
-  beforeEach(async () => {
-    token = new User().genAuthToken();
+//   beforeEach(async () => {
+//     token = new User().genAuthToken();
 
-    product = new Product({
-      name: "Product1",
-      image: "path_to_image1",
-      defaultPrice: 10,
-      numberInStock: 10,
-    });
-  });
-  afterEach(async () => {
-    await Product.remove({});
-    await mongoose.disconnect();
-  });
+//     product = new Product({
+//       name: "Product1",
+//       image: "path_to_image1",
+//       defaultPrice: 10,
+//       numberInStock: 10,
+//     });
+//   });
+//   afterEach(async () => {
+//     await Product.remove({});
+//     await mongoose.disconnect();
+//   });
 
-  const exec = () => {
-    return request(server)
-      .post("/api/products")
-      .set("x-auth-token", token)
-      .send(product);
-  };
+//   const exec = () => {
+//     return request(server)
+//       .post("/api/products")
+//       .set("x-auth-token", token)
+//       .send(product);
+//   };
 
-  it("should return all products", async () => {
-    const res = await exec();
-    expect(res.status).toBe(200);
-    expect(res.body.length).toBe(2);
-    expect(Object.keys(res.body[0])).toEqual(
-      expect.arrayContaining([
-        "name",
-        "defaultPrice",
-        "numberInStock",
-      ])
-    );
-  });
-});
+//   it("should return 401 if client is not logged in", () => {});
+
+//   // it("should return all products", async () => {
+//   //   const res = await exec();
+//   //   expect(res.status).toBe(200);
+//   //   expect(res.body.length).toBe(2);
+//   //   expect(Object.keys(res.body[0])).toEqual(
+//   //     expect.arrayContaining([
+//   //       "name",
+//   //       "defaultPrice",
+//   //       "numberInStock",
+//   //     ])
+//   //   );
+//   // });
+// });
