@@ -1,0 +1,5 @@
+{
+  "name": "Logo Misr Ecommerce",
+  "jwtPrivateKey": "",
+  "db": "mongodb://localhost/logomisr_ecommerce_test"
+}
