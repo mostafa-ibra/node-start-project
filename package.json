@@ -8,11 +8,6 @@
     "testr": "jest --detectOpenHandles --watchAll --verbose --coverage",
     "start": "node index.js"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
-  },
   "type": "module",
   "keywords": [],
   "author": "",
